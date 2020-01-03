@@ -16,6 +16,7 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 
+source $LIB_DIR/binaries.sh
 source $LIB_DIR/common.sh
 source $LIB_DIR/failures.sh
 source <(curl --retry 3 -fsSL $BUILDPACK_STDLIB_URL)
