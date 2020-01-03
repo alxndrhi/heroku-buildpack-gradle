@@ -1,3 +1,22 @@
+install_node_npm() {
+  if [ -f "frontend/package.json" ]; then
+    local node_engine=$(read_json "frontend/package.json" ".engines.node")
+    local npm_engine=$(read_json "frontend/package.json" ".engines.npm")
+
+    echo "engines.node (package.json):  ${node_engine:-unspecified}"
+    echo "engines.npm (package.json):   ${npm_engine:-unspecified (use default)}"
+
+    node_dir=$CACHE_DIR/node
+    if [ ! -d $node_dir ]; then
+      mkdir -p $node_dir
+    fi
+    install_nodejs "$node_engine" "$node_dir"
+    PATH=$PATH:$node_dir/bin
+    install_npm "$npm_engine"
+    export npm_run=$node_dir/bin/npm
+  fi
+}
+
 install_nodejs() {
   local version="$1"
   local dir="$2"

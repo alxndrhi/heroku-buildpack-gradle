@@ -48,6 +48,7 @@ if [ -z "$GRADLE_TASK" ]; then
 fi
 
 install_jdk "${BUILD_DIR}" "${CACHE_DIR}"
+install_node_npm
 
 export GRADLE_OPTS=${GRADLE_OPTS-"-Dorg.gradle.daemon=false -Dorg.gradle.internal.launcher.welcomeMessageEnabled=false"}
 
