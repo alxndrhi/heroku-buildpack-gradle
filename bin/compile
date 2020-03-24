@@ -33,11 +33,11 @@ elif is_spring_boot $BUILD_DIR; then
     echo "-----> Spring Boot detected"
     mcount "task.spring"
   fi
-  DEFAULT_GRADLE_TASK="build -x test -x snapshotTest"
+  DEFAULT_GRADLE_TASK="build -x test -x integrationTest -x snapshotTest"
 elif is_ratpack $BUILD_DIR; then
   echo "-----> Ratpack detected"
   mcount "task.ratpack"
-  DEFAULT_GRADLE_TASK="installDist -x test -x snapshotTest"
+  DEFAULT_GRADLE_TASK="installDist -x test -x integrationTest -x snapshotTest"
 else
   DEFAULT_GRADLE_TASK="stage"
 fi
